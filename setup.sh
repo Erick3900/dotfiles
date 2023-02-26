@@ -10,6 +10,8 @@ git config --global user.name "Erick3900"
 git config --global user.email "erick.guzmanra@anahuac.mx"
 git config --global init.defaultBranch "main"
 
+echo "Clonning or pulling dotfiles repo"
+
 if ! [ -d ~/dotfiles ]; then
     git clone https://github.com/Erick3900/dotfiles ~/dotfiles || { echo >&2 "Failed to clone dotfiles repo with $?"; exit 1; }
 else
@@ -44,7 +46,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 echo "Installing MiniConda"
 wget https://repo.anaconda.com/miniconda/Miniconda3-py310_23.1.0-1-Linux-x86_64.sh -O /tmp/miniconda.sh
-bash /tmp/miniconda.sh -b -p $HOME/miniconda3
+bash /tmp/miniconda.sh -u -b -p $HOME/miniconda3
 
 echo "Installing Oh my zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -58,7 +60,7 @@ echo "Removing existing dotfiles"
 mkdir -p ~/.conan
 mkdir -p ~/.config 
 
-rm -rf ~/.vim ~/.vimrc ~/.zshrc ~/.tmux ~/.tmux.conf ~/.clang-format ~/.profile ~/.bashrc ~/.config/nvim ~/.conan/profiles 2> /dev/null
+rm -rf ~/.vim ~/.vimrc ~/.zshrc ~/.tmux ~/.tmux.conf ~/.clang-format ~/.profile ~/.bashrc ~/.config/nvim ~/.conan/profiles ~/.config/coc 2> /dev/null
 
 echo "Creating symlinks"
 ln -s ~/dotfiles/zshrc ~/.zshrc
@@ -88,7 +90,7 @@ nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerInstall'
 rm -fr ~/.config/nvim
 ln -s ~/dotfiles/nvim ~/.config/nvim
 
-if ! [[ -d ~/.config/coc ]]; then
+if ! [ -d ~/.config/coc ]; then
     mkdir -p ~/.config/coc
 fi
 
@@ -100,14 +102,14 @@ if [ "$(id -u)" -ne 0 ]; then
     sudo chsh -s $(which zsh)
 
     echo "Removing existing dotfiles"
-    sudo rm -rf /root/.vim /root/.vimrc /root/.conan /root/.zshrc /root/.tmux /root/.tmux.conf /root/.clang-format /root/.profile /root/.bashrc /root/.config/nvim /root/.local/share/nvim /root/miniconda3 /root/.cargo /root/.rustup /root/.config/coc 2> /dev/null
+    sudo rm -rf /root/.vim /root/.vimrc /root/.conan /root/.zshrc /root/.tmux /root/.tmux.conf /root/.clang-format /root/.profile /root/.bashrc /root/.config/nvim /root/.local/share/nvim /root/miniconda3 /root/.cargo /root/.rustup /root/.config/coc /root/.conan 2> /dev/null
 
     echo "Creating symlinks"
     sudo mkdir -p /root/.config
     sudo mkdir -p /root/.local/share
 
     sudo ln -s ~/.cargo /root/.cargo
-    sudo ln -s ~/.conan /root/conan
+    sudo ln -s ~/.conan /root/.conan
     sudo ln -s ~/.rustup /root/.rustup
     sudo ln -s ~/miniconda3 /root/miniconda3
     sudo ln -s ~/.config/coc /root/.config/coc
