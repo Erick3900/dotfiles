@@ -2,4 +2,4 @@
 
 echo "Installing Arti Tools"
 
-zsh generator/scripts/install.sh
+zsh ~/dotfiles/arti/generator/scripts/install.sh
