@@ -11,7 +11,9 @@ git config --global user.email "erick.guzmanra@anahuac.mx"
 git config --global init.defaultBranch "main"
 
 if ! [ -d ~/dotfiles ]; then
-    git clone https://github.com/Erick3900/dotfiles ~/dotfiles
+    git clone https://github.com/Erick3900/dotfiles ~/dotfiles || { echo >&2 "Failed to clone dotfiles repo with $?"; exit 1; }
+else
+    git -C ~/dotfiles pull || { echo >&2 "Failed to pull dotfiles repo with $?"; exit 1; }
 fi
 
 echo "Configuring alternatives for gcc & g++"
