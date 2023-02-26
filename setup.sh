@@ -86,8 +86,10 @@ if ! [[ -d ~/.config/coc ]]; then
     mkdir -p ~/.config/coc
 fi
 
-
 yarn --cwd ~/.local/share/nvim/site/pack/packer/start/coc.nvim install
+
+zsh -c "conda config --set auto_activate_base false"
+zsh -c "conda config --set changeps1 false"
 
 if [ "$(id -u)" -ne 0 ]; then
     echo "Installing OhMyZsh for root"
@@ -111,6 +113,9 @@ if [ "$(id -u)" -ne 0 ]; then
     sudo ln -s ~/dotfiles/zshrc /root/.zshrc
     sudo ln -s ~/dotfiles/clang-format /root/.clang-format
     sudo ln -s ~/dotfiles/artichoke.zsh-theme /root/.oh-my-zsh/themes/artichoke.zsh-theme
+
+    sudo zsh -c "conda config --set auto_activate_base false"
+    sudo zsh -c "conda config --set changeps1 false"
 fi
 
 echo "Finished!"
