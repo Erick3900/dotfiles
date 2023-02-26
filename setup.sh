@@ -14,15 +14,15 @@ echo "Configuring alternatives for gcc & g++"
 sudo update-alternatives --remove-all gcc
 sudo update-alternatives --remove-all g++
 
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 10
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 40
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/clang-14 30
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 20
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/clang-14 10
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/clang-15 20
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/clang-15 10
 
-sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-11 10
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-11 40
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/clang++-14 30
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-12 20
-sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/clang++-14 10
-sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/clang++-15 20
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/clang++-15 10
 
 sudo update-alternatives --install /usr/bin/cc cc /usr/bin/gcc 30
 sudo update-alternatives --set cc /usr/bin/gcc
@@ -32,9 +32,6 @@ sudo update-alternatives --set c++ /usr/bin/g++
 
 echo "Installing Conan (v1.59.0)"
 sudo pip install conan==1.59.0
-mkdir -p ~/.conan
-rm -fr ~/.conan/profiles 
-ln -s ~/dotfiles/conan-profiles ~/.conan/profiles
 
 echo "Installing Rust"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -52,13 +49,16 @@ wget -P /tmp https://github.com/neovim/neovim/releases/download/stable/nvim-linu
 sudo apt-get install -y /tmp/nvim-linux64.deb
 
 echo "Removing existing dotfiles"
-rm -rf ~/.vim ~/.vimrc ~/.zshrc ~/.tmux ~/.tmux.conf ~/.clang-format ~/.profile ~/.bashrc ~/.config/nvim 2> /dev/null
-
-echo "Creating symlinks"
+mkdir -p ~/.conan
 mkdir -p ~/.config 
 
+rm -rf ~/.vim ~/.vimrc ~/.zshrc ~/.tmux ~/.tmux.conf ~/.clang-format ~/.profile ~/.bashrc ~/.config/nvim ~/.conan/profiles 2> /dev/null
+
+echo "Creating symlinks"
 ln -s ~/dotfiles/zshrc ~/.zshrc
+ln -s ~/dotfiles/condarc ~/.condarc
 ln -s ~/dotfiles/clang-format ~/.clang-format
+ln -s ~/dotfiles/conan-profiles ~/.conan/profiles
 ln -s ~/dotfiles/artichoke.zsh-theme ~/.oh-my-zsh/themes/artichoke.zsh-theme
 
 echo "Installing NodeJS & Yarn"
@@ -88,9 +88,6 @@ fi
 
 yarn --cwd ~/.local/share/nvim/site/pack/packer/start/coc.nvim install
 
-zsh -c "conda config --set auto_activate_base false"
-zsh -c "conda config --set changeps1 false"
-
 if [ "$(id -u)" -ne 0 ]; then
     echo "Installing OhMyZsh for root"
     sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -103,21 +100,18 @@ if [ "$(id -u)" -ne 0 ]; then
     sudo mkdir -p /root/.config
     sudo mkdir -p /root/.local/share
 
-    sudo ln -s ~/miniconda3 /root/miniconda3
     sudo ln -s ~/.cargo /root/.cargo
     sudo ln -s ~/.conan /root/conan
     sudo ln -s ~/.rustup /root/.rustup
-    sudo ln -s ~/dotfiles/nvim /root/.config/nvim
-    sudo ln -s ~/.local/share/nvim /root/.local/share/nvim
+    sudo ln -s ~/miniconda3 /root/miniconda3
     sudo ln -s ~/.config/coc /root/.config/coc
+    sudo ln -s ~/.local/share/nvim /root/.local/share/nvim
+
     sudo ln -s ~/dotfiles/zshrc /root/.zshrc
+    sudo ln -s ~/dotfiles/condarc /root/.condarc
+    sudo ln -s ~/dotfiles/nvim /root/.config/nvim
     sudo ln -s ~/dotfiles/clang-format /root/.clang-format
     sudo ln -s ~/dotfiles/artichoke.zsh-theme /root/.oh-my-zsh/themes/artichoke.zsh-theme
-
-    sudo zsh -c "conda config --set auto_activate_base false"
-    sudo zsh -c "conda config --set changeps1 false"
 fi
 
-echo "Finished!"
-
-zsh
+echo "Finished, restart your session to start in the new configured shell!"
