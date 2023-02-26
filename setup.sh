@@ -10,6 +10,10 @@ git config --global user.name "Erick3900"
 git config --global user.email "erick.guzmanra@anahuac.mx"
 git config --global init.defaultBranch "main"
 
+if ! [[ -d ~/dotfiles ]]; then
+    git clone https://github.com/Erick3900/dotfiles ~/dotfiles
+fi
+
 echo "Configuring alternatives for gcc & g++"
 sudo update-alternatives --remove-all gcc
 sudo update-alternatives --remove-all g++

@@ -22,7 +22,7 @@ This includes:
 
 Follow this simple steps.
 
-1. Run `setup.sh`
+1. Run `setup.sh` after clonning the repo (or this oneliner `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`)
 2. If the script asks for it, confirm and provide params
 3. Wuuu! Finished!
 
