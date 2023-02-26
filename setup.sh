@@ -114,4 +114,6 @@ if [ "$(id -u)" -ne 0 ]; then
     sudo ln -s ~/dotfiles/artichoke.zsh-theme /root/.oh-my-zsh/themes/artichoke.zsh-theme
 fi
 
+zsh ~/dotfiles/arti/install.sh
+
 echo "Finished, restart your session to start in the new configured shell!"
