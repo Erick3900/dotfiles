@@ -30,6 +30,12 @@ sudo update-alternatives --set cc /usr/bin/gcc
 sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++ 30
 sudo update-alternatives --set c++ /usr/bin/g++
 
+echo "Installing Conan (v1.59.0)"
+sudo pip install conan==1.59.0
+mkdir -p ~/.conan
+rm -fr ~/.conan/profiles 
+ln -s ~/dotfiles/conan-profiles ~/.conan/profiles
+
 echo "Installing Rust"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
@@ -89,7 +95,7 @@ if [ "$(id -u)" -ne 0 ]; then
     sudo chsh -s $(which zsh)
 
     echo "Removing existing dotfiles"
-    sudo rm -rf /root/.vim /root/.vimrc /root/.zshrc /root/.tmux /root/.tmux.conf /root/.clang-format /root/.profile /root/.bashrc /root/.config/nvim /root/.local/share/nvim /root/miniconda3 /root/.cargo /root/.rustup /root/.config/coc 2> /dev/null
+    sudo rm -rf /root/.vim /root/.vimrc /root/.conan /root/.zshrc /root/.tmux /root/.tmux.conf /root/.clang-format /root/.profile /root/.bashrc /root/.config/nvim /root/.local/share/nvim /root/miniconda3 /root/.cargo /root/.rustup /root/.config/coc 2> /dev/null
 
     echo "Creating symlinks"
     sudo mkdir -p /root/.config
@@ -97,6 +103,7 @@ if [ "$(id -u)" -ne 0 ]; then
 
     sudo ln -s ~/miniconda3 /root/miniconda3
     sudo ln -s ~/.cargo /root/.cargo
+    sudo ln -s ~/.conan /root/conan
     sudo ln -s ~/.rustup /root/.rustup
     sudo ln -s ~/dotfiles/nvim /root/.config/nvim
     sudo ln -s ~/.local/share/nvim /root/.local/share/nvim
