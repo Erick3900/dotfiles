@@ -4,7 +4,7 @@ echo "Updating apt"
 sudo apt-get update
 
 echo "Installing programs"
-sudo apt-get install -y ripgrep fzf bat gcc g++ gcc-12 g++-12 gcc-11 g++-11 cmake make ninja-build autoconf automake autotools-dev bison clang-14 clang-15 clang-format-15 clang-tidy-15 clang-tools-15 clangd-15 curl wget git fd-find gettext golang python3 python3-venv python3-pip python-is-python3 ipython3 lua5.4 neofetch net-tools rlwrap ruby sqlite3 tree unrar valgrind xclip zsh
+sudo apt-get install -y ripgrep tmux fzf bat gcc g++ gcc-12 g++-12 gcc-11 g++-11 cmake make ninja-build autoconf automake autotools-dev bison clang-14 clang-15 clang-format-15 clang-tidy-15 clang-tools-15 clangd-15 curl wget git fd-find gettext golang python3 python3-venv python3-pip python-is-python3 ipython3 lua5.4 neofetch net-tools rlwrap ruby sqlite3 tree unrar valgrind xclip zsh
 
 git config --global user.name "Erick3900"
 git config --global user.email "erick.guzmanra@anahuac.mx"
@@ -60,11 +60,12 @@ echo "Removing existing dotfiles"
 mkdir -p ~/.conan
 mkdir -p ~/.config 
 
-rm -rf ~/.vim ~/.vimrc ~/.zshrc ~/.tmux ~/.tmux.conf ~/.clang-format ~/.profile ~/.bashrc ~/.config/nvim ~/.conan/profiles ~/.config/coc 2> /dev/null
+rm -rf ~/.vim ~/.vimrc ~/.zshrc ~/.tmux ~/.tmux.conf ~/.clang-format ~/.profile ~/.bashrc ~/.config/nvim ~/.conan/profiles ~/.config/coc ~/.tmux.conf ~/.tmux 2> /dev/null
 
 echo "Creating symlinks"
 ln -s ~/dotfiles/zshrc ~/.zshrc
 ln -s ~/dotfiles/condarc ~/.condarc
+ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/clang-format ~/.clang-format
 ln -s ~/dotfiles/conan-profiles ~/.conan/profiles
 ln -s ~/dotfiles/artichoke.zsh-theme ~/.oh-my-zsh/themes/artichoke.zsh-theme
@@ -80,6 +81,10 @@ sudo apt-get install nodejs yarn
 
 echo "Installing Packer.nvim"
 git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+echo "Configuring Tmux"
+mkdir -p ~/.tmux/plugins
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 echo "Configuring Neovim"
 mkdir -p ~/.config/nvim
@@ -102,12 +107,13 @@ if [ "$(id -u)" -ne 0 ]; then
     sudo chsh -s $(which zsh)
 
     echo "Removing existing dotfiles"
-    sudo rm -rf /root/.vim /root/.vimrc /root/.conan /root/.zshrc /root/.tmux /root/.tmux.conf /root/.clang-format /root/.profile /root/.bashrc /root/.config/nvim /root/.local/share/nvim /root/miniconda3 /root/.cargo /root/.rustup /root/.config/coc /root/.conan 2> /dev/null
+    sudo rm -rf /root/.vim /root/.vimrc /root/.conan /root/.zshrc /root/.tmux /root/.tmux.conf /root/.clang-format /root/.profile /root/.bashrc /root/.config/nvim /root/.local/share/nvim /root/miniconda3 /root/.cargo /root/.rustup /root/.config/coc /root/.conan /root/.tmux /root/.tmux.conf 2> /dev/null
 
     echo "Creating symlinks"
     sudo mkdir -p /root/.config
     sudo mkdir -p /root/.local/share
 
+    sudo ln -s ~/.tmux /root/.tmux
     sudo ln -s ~/.cargo /root/.cargo
     sudo ln -s ~/.conan /root/.conan
     sudo ln -s ~/.rustup /root/.rustup
@@ -118,6 +124,7 @@ if [ "$(id -u)" -ne 0 ]; then
     sudo ln -s ~/dotfiles/zshrc /root/.zshrc
     sudo ln -s ~/dotfiles/condarc /root/.condarc
     sudo ln -s ~/dotfiles/nvim /root/.config/nvim
+    sudo ln -s ~/dotfiles/tmux.conf /root/.tmux.conf
     sudo ln -s ~/dotfiles/clang-format /root/.clang-format
     sudo ln -s ~/dotfiles/artichoke.zsh-theme /root/.oh-my-zsh/themes/artichoke.zsh-theme
 fi
