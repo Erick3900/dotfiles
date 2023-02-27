@@ -13,7 +13,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="artichoke"
 CASE_SENSITIVE="true"
 
-plugins=(systemd sudo git)
+plugins=(systemd sudo git lxd)
 
 source $ZSH/oh-my-zsh.sh
 
