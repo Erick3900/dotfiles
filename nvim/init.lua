@@ -1,4 +1,4 @@
-vim.opt.runtimepath:append("~/.config/nvim/syntax")
+-- vim.opt.runtimepath:append("~/.config/nvim/syntax")
 
 vim.opt.syntax = 'on'
 
@@ -45,6 +45,8 @@ require("alcachofa")
 
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
+
+vim.opt.fillchars:append({ eob = ' ' })
 
 -- Nightfox Theme
 vim.cmd.colorscheme("duskfox")

@@ -36,6 +36,7 @@ export FZF_DEFAULT_COMMAND='rg --files --fixed-strings --hidden --follow --glob 
 # Personal binaries
 if [ -d /opt/arti/generator/bin ]; then
     export PATH=$PATH:/opt/arti/generator/bin
+    export PATH=$PATH:/opt/arti/subs/bin
 fi
 
 # Spicetify
