@@ -34,9 +34,8 @@ export FZF_DEFAULT_COMMAND='rg --files --fixed-strings --hidden --follow --glob 
 
 
 # Personal binaries
-if [ -d /opt/arti/generator/bin ]; then
-    export PATH=$PATH:/opt/arti/generator/bin
-    export PATH=$PATH:/opt/arti/subs/bin
+if [ -f /opt/arti/env.sh ]; then
+    source /opt/arti/env.sh
 fi
 
 # Spicetify
@@ -70,3 +69,4 @@ function files() {
 # Aliases
 
 alias cat='batcat -p -P'
+alias clip='xclip -sel clip'
