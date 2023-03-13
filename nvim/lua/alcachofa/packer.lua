@@ -30,4 +30,12 @@ return require('packer').startup(function (use)
     use('voldikss/vim-floaterm')
     use('startup-nvim/startup.nvim')
     use('fannheyward/telescope-coc.nvim')
+
+    use {
+      "Dax89/automaton.nvim",
+      requires = {
+           {"nvim-lua/plenary.nvim"},
+           {"nvim-telescope/telescope.nvim"}
+        }
+    }
 end)
