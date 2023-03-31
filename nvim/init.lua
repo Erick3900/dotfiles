@@ -48,5 +48,3 @@ vim.opt.background = "dark"
 
 vim.opt.fillchars:append({ eob = ' ' })
 
--- Nightfox Theme
-vim.cmd.colorscheme("duskfox")

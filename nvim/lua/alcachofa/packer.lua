@@ -30,6 +30,7 @@ return require('packer').startup(function (use)
     use('voldikss/vim-floaterm')
     use('startup-nvim/startup.nvim')
     use('fannheyward/telescope-coc.nvim')
+    use('folke/zen-mode.nvim')
 
     use {
       "Dax89/automaton.nvim",

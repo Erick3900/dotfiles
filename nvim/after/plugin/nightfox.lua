@@ -17,3 +17,6 @@ require('nightfox').setup({
         }
     }
 })
+
+-- Nightfox Theme
+vim.cmd.colorscheme("duskfox")
