@@ -40,16 +40,11 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
-
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 5
 vim.opt.signcolumn = "yes"
 
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
 vim.opt.isfname:append("@-@")
-
-vim.opt.fillchars:append({ eob = ' ' })
 
 require("alcachofa")

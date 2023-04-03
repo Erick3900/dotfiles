@@ -3,13 +3,13 @@ vim.g.mapleader = " "
 vim.keymap.set("i", "<C-s>", "<Esc>:w<cr>a", { silent = true })
 vim.keymap.set("n", "<C-s>", ":w<cr>", { silent = true })
 
-vim.keymap.set("i", "<A-J>", "<Esc>:m -2<cr>a", { silent = true })
-vim.keymap.set("n", "<A-J>", ":m -2<cr>", { silent = true })
-vim.keymap.set("v", "<A-J>", ":m '<-2<CR>gv=gv")
+vim.keymap.set("i", "<A-K>", "<Esc>:m -2<cr>a", { silent = true })
+vim.keymap.set("n", "<A-K>", ":m -2<cr>", { silent = true })
+vim.keymap.set("v", "<A-K>", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set("i", "<A-K>", "<Esc>:m +1<cr>a", { silent = true })
-vim.keymap.set("n", "<A-K>", ":m +1<cr>", { silent = true })
-vim.keymap.set("v", "<A-K>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("i", "<A-J>", "<Esc>:m +1<cr>a", { silent = true })
+vim.keymap.set("n", "<A-J>", ":m +1<cr>", { silent = true })
+vim.keymap.set("v", "<A-J>", ":m '>+1<CR>gv=gv")
 
 vim.keymap.set("n", "<A-d>", "\"_d", { silent = true })
 vim.keymap.set("v", "<A-d>", "\"_d", { silent = true })

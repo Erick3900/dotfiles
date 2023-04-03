@@ -53,7 +53,8 @@ return require('packer').startup(function(use)
             { 'hrsh7th/nvim-cmp' },
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'L3MON4D3/LuaSnip' },
-            { 'p00f/clangd_extensions.nvim' }
+            { 'p00f/clangd_extensions.nvim' },
+            { 'onsails/lspkind.nvim' }
         }
     }
 end)
