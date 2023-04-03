@@ -64,6 +64,7 @@ rm -rf ~/.vim ~/.vimrc ~/.zshrc ~/.tmux ~/.tmux.conf ~/.clang-format ~/.profile 
 
 echo "Creating symlinks"
 ln -s ~/dotfiles/zshrc ~/.zshrc
+ln -s ~/dotfiles/clangd ~/.clangd
 ln -s ~/dotfiles/condarc ~/.condarc
 ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/clang-format ~/.clang-format
@@ -122,6 +123,7 @@ if [ "$(id -u)" -ne 0 ]; then
     sudo ln -s ~/.local/share/nvim /root/.local/share/nvim
 
     sudo ln -s ~/dotfiles/zshrc /root/.zshrc
+    sudo ln -s ~/dotfiles/clangd /root/.clangd
     sudo ln -s ~/dotfiles/condarc /root/.condarc
     sudo ln -s ~/dotfiles/nvim /root/.config/nvim
     sudo ln -s ~/dotfiles/tmux.conf /root/.tmux.conf
