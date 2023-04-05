@@ -43,7 +43,11 @@ lspconfig.golangci_lint_ls.setup({})
 
 require("clangd_extensions").setup({
     server = {
-        cmd = { 'clangd', '--query-driver=/usr/bin/gcc,/usr/bin/g++' }
+        cmd = {
+            'clangd',
+            '--query-driver=/usr/bin/gcc,/usr/bin/g++',
+            '--header-insertion=never'
+        }
     }
 })
 
