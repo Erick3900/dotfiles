@@ -1,1 +1,6 @@
-require('automaton').setup()
+require('automaton').setup({
+    integrations = {
+        luasnip = true,
+        cmp = true,
+    }
+})
