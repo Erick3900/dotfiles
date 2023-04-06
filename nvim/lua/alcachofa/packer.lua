@@ -5,6 +5,8 @@ return require('packer').startup(function(use)
 
     -- Themes
     use('EdenEast/nightfox.nvim')
+    use('ellisonleao/gruvbox.nvim')
+    use('lmburns/kimbox')
 
     -- Syntax Highlighting
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
@@ -55,6 +57,14 @@ return require('packer').startup(function(use)
             { 'L3MON4D3/LuaSnip' },
             { 'p00f/clangd_extensions.nvim' },
             { 'onsails/lspkind.nvim' }
+        }
+    }
+
+    use {
+        "folke/noice.nvim",
+        requires = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
         }
     }
 end)

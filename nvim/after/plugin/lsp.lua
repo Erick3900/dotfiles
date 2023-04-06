@@ -139,7 +139,7 @@ lsp.on_attach(function(_, bufnr)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
     vim.keymap.set({ 'n', 'i' }, '<C-h>', vim.lsp.buf.signature_help, opts)
     vim.keymap.set({ 'n', 'i' }, '<C-j>', function()
-        require('telescope.builtin').diagnostics()
+        require('telescope.builtin').diagnostics(require('telescope.themes').get_dropdown())
     end, opts)
     vim.keymap.set({ 'n', 'i' }, '<A-f>', function()
         vim.lsp.buf.format { async = true }
