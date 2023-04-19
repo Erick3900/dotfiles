@@ -1,47 +1,47 @@
--- require('nightfox').setup({
---     options = {
---         transparent = true,
---         styles = {
---             comments = "italic",
---             keywords = "bold",
---         },
---         inverse = {
---             match_paren = true,
---         },
---     },
---     groups = {
---         all = {
---             Conceal = {
---                 fg = "palette.comment"
---             },
---             Normal = {
---                 bg = "none",
---                 ctermbg = "none"
---             },
---             NormalFloat = {
---                 bg = "none",
---                 ctermbg = "none"
---             }
---         }
---     }
--- })
-
--- -- Nightfox Theme
--- vim.cmd.colorscheme("duskfox")
-
-require("gruvbox").setup({
-    overrides = {
-        Normal = {
-            bg = "none",
-            ctermbg = "none"
+require('nightfox').setup({
+    options = {
+        transparent = true,
+        styles = {
+            comments = "italic",
+            keywords = "bold",
         },
-        NormalFloat = {
-            bg = "none",
-            ctermbg = "none"
-        }
+        inverse = {
+            match_paren = true,
+        },
     },
-    transparent_mode = true,
+    groups = {
+        all = {
+            Conceal = {
+                fg = "palette.comment"
+            },
+            Normal = {
+                bg = "none",
+                ctermbg = "none"
+            },
+            NormalFloat = {
+                bg = "none",
+                ctermbg = "none"
+            }
+        }
+    }
 })
 
-vim.cmd("colorscheme gruvbox")
+-- Nightfox Theme
+vim.cmd.colorscheme("duskfox")
+
+-- require("gruvbox").setup({
+--     overrides = {
+--         Normal = {
+--             bg = "none",
+--             ctermbg = "none"
+--         },
+--         NormalFloat = {
+--             bg = "none",
+--             ctermbg = "none"
+--         }
+--     },
+--     transparent_mode = true,
+-- })
+
+-- vim.cmd("colorscheme gruvbox")
 
