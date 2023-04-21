@@ -4,7 +4,7 @@ echo "Updating apt"
 sudo apt-get update
 
 echo "Installing programs"
-sudo apt-get install -y ripgrep tmux fzf bat gcc g++ gcc-12 g++-12 gcc-11 g++-11 cmake make ninja-build autoconf automake autotools-dev bison clang-14 clang-15 clang-format-15 clang-tidy-15 clang-tools-15 clangd-15 curl wget git fd-find gettext golang python3 python3-venv python3-pip python-is-python3 ipython3 lua5.4 neofetch net-tools rlwrap ruby sqlite3 tree unrar valgrind xclip zsh
+sudo apt-get install -y ripgrep tmux fzf bat gcc g++ gcc-12 g++-12 gcc-11 g++-11 cmake make ninja-build autoconf automake autotools-dev bison clang-15 clang-format-15 clang-tidy-15 clang-tools-15 clangd-15 curl wget git fd-find gettext golang python3 python3-venv python3-pip python-is-python3 ipython3 lua5.4 neofetch net-tools rlwrap ruby sqlite3 tree unrar valgrind xclip zsh
 
 git config --global user.name "Erick3900"
 git config --global user.email "erick.guzmanra@anahuac.mx"
@@ -23,12 +23,10 @@ sudo update-alternatives --remove-all gcc
 sudo update-alternatives --remove-all g++
 
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 40
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/clang-14 30
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 20
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/clang-15 10
 
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-11 40
-sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/clang++-14 30
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-12 20
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/clang++-15 10
 
@@ -53,7 +51,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 chsh -s $(which zsh)
 
 echo "Installing Neovim"
-wget -P /tmp https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb
+wget -P /tmp https://github.com/neovim/neovim/releases/download/v0.8.3/nvim-linux64.deb
 sudo apt-get install -y /tmp/nvim-linux64.deb
 
 echo "Removing existing dotfiles"
@@ -72,7 +70,7 @@ ln -s ~/dotfiles/conan-profiles ~/.conan/profiles
 ln -s ~/dotfiles/artichoke.zsh-theme ~/.oh-my-zsh/themes/artichoke.zsh-theme
 
 echo "Installing NodeJS & Yarn"
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
@@ -99,8 +97,6 @@ ln -s ~/dotfiles/nvim ~/.config/nvim
 if ! [ -d ~/.config/coc ]; then
     mkdir -p ~/.config/coc
 fi
-
-yarn --cwd ~/.local/share/nvim/site/pack/packer/start/coc.nvim install
 
 if [ "$(id -u)" -ne 0 ]; then
     echo "Installing OhMyZsh for root"

@@ -11,7 +11,6 @@ require('nvim-treesitter.configs').setup({
         "lua",
         "rust",
         "bash",
-        "help",
         "html",
         "java",
         "json",
