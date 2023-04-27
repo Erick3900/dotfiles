@@ -25,10 +25,3 @@ Follow this simple steps.
 1. Run `setup.sh` after clonning the repo (or this oneliner `sh -c "$(curl -fsSL https://raw.githubusercontent.com/Erick3900/dotfiles/main/setup.sh)"`)
 2. If the script asks for it, confirm and provide params
 3. Wuuu! Finished!
-
-## Additional steps
-
-```bash
-conda config --set auto_activate_base false
-conda config --set changeps1 False
-```
