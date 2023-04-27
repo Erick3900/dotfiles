@@ -12,31 +12,54 @@ return require('packer').startup(function(use)
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
     -- Utils
-    use({
+    use('junegunn/fzf')
+    use("mbbill/undotree")
+    use('junegunn/fzf.vim')
+    use("tpope/vim-fugitive")
+    use('windwp/nvim-autopairs')
+    use('voldikss/vim-floaterm')
+    use('airblade/vim-gitgutter')
+    use('preservim/nerdcommenter')
+    use('startup-nvim/startup.nvim')
+    use('NvChad/nvim-colorizer.lua')
+    use('christoomey/vim-tmux-navigator')
+    use('lukas-reineke/indent-blankline.nvim')
+
+    use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = false }
-    })
-    use({
+    }
+
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = false }
+    }
+
+    use {
+        'akinsho/bufferline.nvim',
+        tag = "*",
+        requires = 'nvim-tree/nvim-web-devicons'
+    }
+
+    use {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.1',
         requires = { { 'nvim-lua/plenary.nvim' } }
-    })
-    use('preservim/nerdtree')
-    use('jiangmiao/auto-pairs')
-    use('preservim/nerdcommenter')
-    use('ryanoasis/vim-devicons')
-    use('airblade/vim-gitgutter')
-    use('junegunn/fzf')
-    use('junegunn/fzf.vim')
-    use('voldikss/vim-floaterm')
-    use('startup-nvim/startup.nvim')
-    use('folke/zen-mode.nvim')
+    }
 
     use {
         "Dax89/automaton.nvim",
         requires = {
             { "nvim-lua/plenary.nvim" },
             { "nvim-telescope/telescope.nvim" }
+        }
+    }
+
+    use {
+        "folke/noice.nvim",
+        requires = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
         }
     }
 
@@ -57,14 +80,6 @@ return require('packer').startup(function(use)
             { 'L3MON4D3/LuaSnip' },
             { 'p00f/clangd_extensions.nvim' },
             { 'onsails/lspkind.nvim' }
-        }
-    }
-
-    use {
-        "folke/noice.nvim",
-        requires = {
-            "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
         }
     }
 end)

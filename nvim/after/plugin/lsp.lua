@@ -44,7 +44,7 @@ lspconfig.golangci_lint_ls.setup({})
 require("clangd_extensions").setup({
     server = {
         cmd = {
-            'clangd',
+            '/opt/llvm-16/bin/clangd',
             '--query-driver=/usr/bin/gcc,/usr/bin/g++',
             '--header-insertion=never'
         }
@@ -129,22 +129,23 @@ lsp.set_preferences({
 lsp.on_attach(function(_, bufnr)
     local opts = { buffer = bufnr, remap = false }
 
+    vim.keymap.set('n', '<leader>vd', vim.diagnostic.open_float, opts)
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', '<space>vd', vim.diagnostic.open_float, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-    vim.keymap.set({ 'n', 'i' }, '<C-h>', vim.lsp.buf.signature_help, opts)
-    vim.keymap.set({ 'n', 'i' }, '<C-j>', function()
-        require('telescope.builtin').diagnostics(require('telescope.themes').get_dropdown())
-    end, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set({ 'n', 'i' }, '<A-f>', function()
         vim.lsp.buf.format { async = true }
     end, opts)
+    vim.keymap.set('n', '<leader>fd', function()
+        require('telescope.builtin').diagnostics(require('telescope.themes').get_dropdown())
+    end, opts)
 end)
+
+lsp.nvim_workspace()
 
 lsp.setup()
 

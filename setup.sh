@@ -4,7 +4,7 @@ echo "Updating apt"
 sudo apt-get update
 
 echo "Installing programs"
-sudo apt-get install -y ripgrep tmux fzf bat gcc g++ gcc-12 g++-12 gcc-11 g++-11 cmake make ninja-build autoconf automake autotools-dev bison clang-15 clang-format-15 clang-tidy-15 clang-tools-15 clangd-15 curl wget git fd-find gettext golang python3 python3-venv python3-pip python-is-python3 ipython3 lua5.4 neofetch net-tools rlwrap ruby sqlite3 tree unrar valgrind xclip zsh
+sudo apt-get install -y ripgrep tmux fzf bat gcc g++ gcc-12 g++-12 gcc-11 g++-11 gcc-11-multilib gcc-12-multilib cmake make ninja-build autoconf automake autotools-dev bison clang-15 clang-format-15 clang-tidy-15 clang-tools-15 clangd-15 curl wget git fd-find gettext golang python3 python3-venv python3-pip python-is-python3 ipython3 lua5.4 neofetch net-tools rlwrap ruby sqlite3 tree unrar valgrind xclip zsh
 
 git config --global user.name "Erick3900"
 git config --global user.email "erick.guzmanra@anahuac.mx"
@@ -50,10 +50,6 @@ echo "Installing Oh my zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 chsh -s $(which zsh)
 
-echo "Installing Neovim"
-wget -P /tmp https://github.com/neovim/neovim/releases/download/v0.8.3/nvim-linux64.deb
-sudo apt-get install -y /tmp/nvim-linux64.deb
-
 echo "Removing existing dotfiles"
 mkdir -p ~/.conan
 mkdir -p ~/.config 
@@ -78,25 +74,12 @@ sudo apt-get update
 
 sudo apt-get install nodejs yarn 
 
-echo "Installing Packer.nvim"
-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
 echo "Configuring Tmux"
 mkdir -p ~/.tmux/plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-echo "Configuring Neovim"
-mkdir -p ~/.config/nvim
-cp ~/dotfiles/nvim-pre-install.lua ~/.config/nvim/init.lua
-
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerInstall'
-
-rm -fr ~/.config/nvim
-ln -s ~/dotfiles/nvim ~/.config/nvim
-
-if ! [ -d ~/.config/coc ]; then
-    mkdir -p ~/.config/coc
-fi
+echo "Installing Neovim"
+zsh ~/dotfiles/nvim-install.sh
 
 if [ "$(id -u)" -ne 0 ]; then
     echo "Installing OhMyZsh for root"
