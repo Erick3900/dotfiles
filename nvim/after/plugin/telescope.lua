@@ -28,8 +28,8 @@ require('telescope').setup({
         border = true,
         borderchars = {
             prompt = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-            results = { "─", "│", "─", "│", "╭", "╮", "┤", "├" },
-            preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+            results = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+            preview = { " " },
         },
         file_ignore_patterns = { "node_modules", "build", "BuildDebug", "BuildRelease" },
         path_display = { "truncate" },

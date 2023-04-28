@@ -4,9 +4,8 @@ return require('packer').startup(function(use)
     use('wbthomason/packer.nvim')
 
     -- Themes
+    use('luisiacc/gruvbox-baby')
     use('EdenEast/nightfox.nvim')
-    use('ellisonleao/gruvbox.nvim')
-    use('lmburns/kimbox')
 
     -- Syntax Highlighting
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
@@ -18,10 +17,11 @@ return require('packer').startup(function(use)
     use("tpope/vim-fugitive")
     use('windwp/nvim-autopairs')
     use('voldikss/vim-floaterm')
+    use('nvim-lua/plenary.nvim')
     use('airblade/vim-gitgutter')
     use('preservim/nerdcommenter')
-    use('startup-nvim/startup.nvim')
     use('NvChad/nvim-colorizer.lua')
+    use('startup-nvim/startup.nvim')
     use('christoomey/vim-tmux-navigator')
     use('lukas-reineke/indent-blankline.nvim')
 

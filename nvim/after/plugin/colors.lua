@@ -1,3 +1,5 @@
+local c = {}
+
 require('nightfox').setup({
     options = {
         transparent = true,
@@ -28,20 +30,3 @@ require('nightfox').setup({
 
 -- Nightfox Theme
 vim.cmd.colorscheme("duskfox")
-
--- require("gruvbox").setup({
---     overrides = {
---         Normal = {
---             bg = "none",
---             ctermbg = "none"
---         },
---         NormalFloat = {
---             bg = "none",
---             ctermbg = "none"
---         }
---     },
---     transparent_mode = true,
--- })
-
--- vim.cmd("colorscheme gruvbox")
-
