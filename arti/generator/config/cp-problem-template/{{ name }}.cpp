@@ -25,6 +25,4 @@ int main(int argc, char *argv[]) {
         std::cin.tie(nullptr), 
         std::cout.tie(nullptr);
 
-    
-
 }

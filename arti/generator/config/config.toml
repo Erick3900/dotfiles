@@ -1,8 +1,8 @@
-[cp]
+[cp-contest]
 type = "folder"
 name = "cp-contest"
 root = "{{ name }}"
-folder = "cp-template"
+folder = "cp-contest-template"
 
 [cmake-project]
 type = "folder"

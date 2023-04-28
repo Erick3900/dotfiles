@@ -48,7 +48,7 @@ return require('packer').startup(function(use)
     }
 
     use {
-        "Dax89/automaton.nvim",
+        "Erick3900/automaton.nvim",
         requires = {
             { "nvim-lua/plenary.nvim" },
             { "nvim-telescope/telescope.nvim" }
