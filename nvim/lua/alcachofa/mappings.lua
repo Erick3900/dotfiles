@@ -21,9 +21,4 @@ vim.keymap.set("i", "<A-h>", "<Left>", { silent = true, remap = true })
 vim.keymap.set("i", "<A-j>", "<Down>", { silent = true, remap = true })
 vim.keymap.set("i", "<A-k>", "<Up>", { silent = true, remap = true })
 
-vim.keymap.set("n", "<C-h>", "<C-w>h", { silent = true, remap = true })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { silent = true, remap = true })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { silent = true, remap = true })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = true, remap = true })
-
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])

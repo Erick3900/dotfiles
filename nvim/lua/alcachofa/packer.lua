@@ -48,11 +48,18 @@ return require('packer').startup(function(use)
     }
 
     use {
-        "Erick3900/automaton.nvim",
+        "Erick3900/arti.nvim",
         requires = {
             { "nvim-lua/plenary.nvim" },
             { "nvim-telescope/telescope.nvim" }
-        }
+        },
+        config = function()
+            local arti = require('arti')
+
+            arti.setup {
+                ws = { enabled = true }
+            }
+        end
     }
 
     use {

@@ -25,7 +25,7 @@ local options = {
         ignore = false,
     },
     filesystem_watchers = {
-        enable = true,
+        enable = false,
     },
     actions = {
         open_file = {

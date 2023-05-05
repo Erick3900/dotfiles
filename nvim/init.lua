@@ -24,6 +24,7 @@ vim.opt.mouse = "a"
 
 vim.opt.wrap = false
 
+vim.opt.autoread = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.writebackup = false
