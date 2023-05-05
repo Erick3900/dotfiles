@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.20)
 
 set(CMAKE_CXX_STANDARD {{ cpp_std }})
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -11,7 +11,7 @@ project(
     LANGUAGES CXX
 )
 
-file(GLOB_RECURSE SOURCES "*.cpp")
+file(GLOB_RECURSE SOURCES "**.cpp")
 
 foreach(FILE IN LISTS SOURCES)
     cmake_path(GET FILE PARENT_PATH PARENT)
@@ -19,16 +19,24 @@ foreach(FILE IN LISTS SOURCES)
     cmake_path(GET FILE STEM FILE_STEM)
 
     if (NOT ${PARENT_STEM} MATCHES "CompilerIdCXX")
+        if (NOT "${CMAKE_CURRENT_SOURCE_DIR}" MATCHES "${PARENT}")
+            string(REPLACE "${CMAKE_CURRENT_SOURCE_DIR}/" "" PROJECT_PATH "${PARENT}")
+            string(REPLACE "/" "-" PROBLEM_SOURCE "${PROJECT_PATH}")
+            set(PROBLEM_TARGET "${PROBLEM_SOURCE}-${FILE_STEM}")
+        else()
+            set(PROBLEM_TARGET "${FILE_STEM}")
+        endif()
+
         add_executable(
-            ${PARENT_STEM}-${FILE_STEM} 
+            ${PROBLEM_TARGET} 
                 ${FILE}
         )
 
         set_target_properties(
-            ${PARENT_STEM}-${FILE_STEM} PROPERTIES
-                RUNTIME_OUTPUT_DIRECTORY ${PARENT}
+            ${PROBLEM_TARGET} PROPERTIES
+                RUNTIME_OUTPUT_DIRECTORY ${PARENT}/bin
                 RUNTIME_OUTPUT_NAME ${FILE_STEM}
                 SUFFIX ""
         )
     endif()
-endforeach() 
+endforeach()
