@@ -156,7 +156,7 @@ lsp.on_attach(function(_, bufnr)
         vim.lsp.buf.format { async = true }
     end, opts)
     vim.keymap.set('n', '<leader>fd', function()
-        require('telescope.builtin').diagnostics(require('telescope.themes').get_dropdown())
+        require('telescope.builtin').diagnostics()
     end, opts)
 end)
 

@@ -6,6 +6,7 @@ return require('packer').startup(function(use)
     -- Themes
     use('luisiacc/gruvbox-baby')
     use('EdenEast/nightfox.nvim')
+    use('rebelot/kanagawa.nvim')
 
     -- Syntax Highlighting
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
@@ -43,7 +44,7 @@ return require('packer').startup(function(use)
 
     use {
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.1',
+        tag = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
