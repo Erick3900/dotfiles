@@ -23,7 +23,8 @@ lsp.ensure_installed({
     'pyright',
     'rust_analyzer',
     'taplo',
-    'yamlls'
+    'yamlls',
+    'zls'
 })
 
 lspconfig.html.setup({})
@@ -33,12 +34,17 @@ lspconfig.cssls.setup({})
 lspconfig.lua_ls.setup({})
 lspconfig.bashls.setup({})
 lspconfig.jsonls.setup({})
-lspconfig.yamlls.setup({})
 lspconfig.pyright.setup({})
 lspconfig.tsserver.setup({})
 lspconfig.remark_ls.setup({})
 lspconfig.rust_analyzer.setup({})
 lspconfig.golangci_lint_ls.setup({})
+lspconfig.zls.setup({})
+lspconfig.yamlls.setup({
+    settings = {
+        yaml = { keyOrdering = false }
+    }
+})
 
 lspconfig.lua_ls.setup({
     settings = {

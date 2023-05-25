@@ -5,8 +5,8 @@ return require('packer').startup(function(use)
 
     -- Themes
     use('luisiacc/gruvbox-baby')
-    use('EdenEast/nightfox.nvim')
     use('rebelot/kanagawa.nvim')
+    use('EdenEast/nightfox.nvim')
 
     -- Syntax Highlighting
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
