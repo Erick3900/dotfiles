@@ -19,7 +19,6 @@ lsp.ensure_installed({
     'jsonls',
     'tsserver',
     'lua_ls',
-    'remark_ls',
     'pyright',
     'rust_analyzer',
     'taplo',
@@ -36,7 +35,6 @@ lspconfig.bashls.setup({})
 lspconfig.jsonls.setup({})
 lspconfig.pyright.setup({})
 lspconfig.tsserver.setup({})
-lspconfig.remark_ls.setup({})
 lspconfig.rust_analyzer.setup({})
 lspconfig.golangci_lint_ls.setup({})
 lspconfig.zls.setup({})

@@ -3,17 +3,12 @@ local actions = require('telescope.actions')
 local config = require('telescope.config')
 
 local vimgrep_args = { unpack(config.values.vimgrep_arguments) }
-table.insert(vimgrep_args, '-L')
+table.insert(vimgrep_args, '--follow')
 table.insert(vimgrep_args, '--hidden')
 table.insert(vimgrep_args, '--trim')
+table.insert(vimgrep_args, '--no-ignore')
 table.insert(vimgrep_args, '--glob')
 table.insert(vimgrep_args, '!**/.git/*')
-
-vim.keymap.set("n", "<leader>fs", function() builtin.current_buffer_fuzzy_find() end, { silent = true })
-vim.keymap.set("n", "<leader>fg", function() builtin.live_grep() end, { silent = true })
-vim.keymap.set("n", "<leader>ff", function() builtin.find_files() end, { silent = true })
-vim.keymap.set("n", "<leader>fb", function() builtin.buffers() end, { silent = true })
-vim.keymap.set("n", "<leader>fr", function() builtin.resume() end, { silent = true })
 
 require('telescope').setup({
     defaults = {
@@ -26,13 +21,8 @@ require('telescope').setup({
             height = 0.8,
         },
         border = true,
-        -- borderchars = {
-        --     prompt = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-        --     results = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-        --     preview = { " " },
-        -- },
         borderchars = { "█", " ", "▀", "█", "█", " ", " ", "▀" },
-        file_ignore_patterns = { "node_modules", "build", "BuildDebug", "BuildRelease" },
+        file_ignore_patterns = { "node_modules" },
         path_display = { "truncate" },
         color_devicons = true,
         set_env = { ["COLORTERM"] = "truecolor" },
@@ -92,9 +82,27 @@ require('telescope').setup({
                 "--trim",
                 "--files",
                 "--hidden",
+                "--no-ignore",
                 "--glob",
-                "!**/.git/*"
+                "!**/.git/*",
+                "--glob",
+                "!**/.cache/*",
+                "--glob",
+                "!**/.idea/*",
+                "--glob",
+                "!**/.vim/*",
+                "--glob",
+                "!**/BuildRelease/*",
+                "--glob",
+                "!**/BuildDebug/*",
             }
         }
     }
 })
+
+
+vim.keymap.set("n", "<leader>fs", function() builtin.current_buffer_fuzzy_find() end, { silent = true })
+vim.keymap.set("n", "<leader>fg", function() builtin.live_grep() end, { silent = true })
+vim.keymap.set("n", "<leader>ff", function() builtin.find_files() end, { silent = true })
+vim.keymap.set("n", "<leader>fb", function() builtin.buffers() end, { silent = true })
+vim.keymap.set("n", "<leader>fr", function() builtin.resume() end, { silent = true })
