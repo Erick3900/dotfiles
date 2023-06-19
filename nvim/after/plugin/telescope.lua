@@ -9,6 +9,18 @@ table.insert(vimgrep_args, '--trim')
 table.insert(vimgrep_args, '--no-ignore')
 table.insert(vimgrep_args, '--glob')
 table.insert(vimgrep_args, '!**/.git/*')
+table.insert(vimgrep_args, "--glob")
+table.insert(vimgrep_args, "!**/.cache/*")
+table.insert(vimgrep_args, "--glob")
+table.insert(vimgrep_args, "!**/.idea/*")
+table.insert(vimgrep_args, "--glob")
+table.insert(vimgrep_args, "!**/.vim/*")
+table.insert(vimgrep_args, "--glob")
+table.insert(vimgrep_args, "!**/BuildRelease/*")
+table.insert(vimgrep_args, "--glob")
+table.insert(vimgrep_args, "!**/BuildDebug/*")
+table.insert(vimgrep_args, "--glob")
+table.insert(vimgrep_args, "!**/build/*")
 
 require('telescope').setup({
     defaults = {
@@ -95,6 +107,8 @@ require('telescope').setup({
                 "!**/BuildRelease/*",
                 "--glob",
                 "!**/BuildDebug/*",
+                "--glob",
+                "!**/build/*",
             }
         }
     }
