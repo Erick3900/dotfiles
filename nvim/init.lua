@@ -48,4 +48,6 @@ vim.opt.termguicolors = true
 vim.opt.background = "dark"
 vim.opt.isfname:append("@-@")
 
+vim.opt.ea = true
+
 require("alcachofa")

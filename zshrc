@@ -70,3 +70,5 @@ function files() {
 
 alias cat='batcat -p -P'
 alias clip='xclip -sel clip'
+
+export CPM_SOURCE_CACHE=$HOME/dev/.cpm-cache

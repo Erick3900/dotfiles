@@ -25,15 +25,28 @@ table.insert(vimgrep_args, "!**/build/*")
 require('telescope').setup({
     defaults = {
         vimgrep_arguments = vimgrep_args,
+
         sorting_strategy = "ascending",
-        layout_strategy = "vertical",
+        layout_strategy = "horizontal",
         layout_config = {
-            preview_cutoff = 1,
-            width = 0.8,
-            height = 0.8,
+            horizontal = {
+                prompt_position = "bottom",
+                preview_width = 0.55,
+                results_width = 0.8,
+            },
+            vertical = {
+                mirror = false,
+            },
+            width = 0.87,
+            height = 0.80,
+            preview_cutoff = 120,
         },
+        prompt_prefix = "   ",
+        selection_caret = "  ",
+
         border = true,
-        borderchars = { "█", " ", "▀", "█", "█", " ", " ", "▀" },
+        borderchars = { "▄", "▌", "▀", "▐", "▗", "▖", "▘", "▝" },
+
         file_ignore_patterns = { "node_modules" },
         path_display = { "truncate" },
         color_devicons = true,
