@@ -1,6 +1,6 @@
 return {
     {
-        name = "Conan install",
+        name = "conan",
         type = "shell",
         command = "conan",
         args = {
@@ -13,7 +13,7 @@ return {
         cwd = workspace_folder
     },
     {
-        name = "Configure",
+        name = "configure",
         type = "shell",
         command = {
             {
@@ -38,11 +38,11 @@ return {
         },
         cwd = workspace_folder,
         depends = {
-            "Conan install"
+            "conan"
         }
     },
     {
-        name = "Build",
+        name = "build",
         type = "shell",
         command = "cmake",
         args = {
@@ -52,7 +52,7 @@ return {
         },
         cwd = ws.build_dir,
         depends = {
-            "Configure"
+            "configure"
         },
         default = true,
     }

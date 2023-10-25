@@ -1,7 +1,7 @@
 return {
     {
         name = "build_mode",
-        label = "Build Mode",
+        label = "build",
         choices = {
             "Debug",
             "Release",

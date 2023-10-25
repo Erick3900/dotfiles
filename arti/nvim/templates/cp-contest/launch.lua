@@ -1,6 +1,6 @@
 return {
     {
-        name = "Run",
+        name = "run",
         cwd = workspace_folder,
         program = "./run",
         args = {
@@ -9,11 +9,11 @@ return {
         },
         default = true,
         depends = {
-            "Build"
+            "build"
         }
     },
     {
-        name = "Copy",
+        name = "copy",
         cwd = workspace_folder,
         program = "/opt/arti/sub/bin/arti-sub",
         args = {
@@ -23,7 +23,7 @@ return {
         }
     },
     {
-        name = "Arti-Sub",
+        name = "arti-sub",
         cwd = workspace_folder,
         program = "/opt/arti/sub/bin/arti-sub",
         args = {

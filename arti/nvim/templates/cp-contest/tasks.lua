@@ -1,6 +1,6 @@
 return {
     {
-        name = "Configure",
+        name = "configure",
         type = "shell",
         command = "cmake",
         args = {
@@ -12,7 +12,7 @@ return {
         cwd = workspace_folder
     },
     {
-        name = "Build",
+        name = "build",
         type = "shell",
         command = "cmake",
         args = {
@@ -21,12 +21,12 @@ return {
         },
         cwd = ws.build_dir,
         depends = {
-            "Configure"
+            "configure"
         },
         default = true,
     },
     {
-        name = "Clean",
+        name = "clean",
         type = "shell",
         command = "cmake",
         args = {
@@ -34,5 +34,37 @@ return {
             "--target clean"
         },
         cwd = ws.build_dir
-    }
+    },
+    {
+        name = "new_problem",
+        type = "lua",
+        callback = function(runTask)
+            local name = ""
+
+            vim.ui.input({
+                prompt = "Name: ",
+                default = "",
+            }, function(str)
+                name = str
+            end)
+
+            local path = require('plenary.path')
+
+            local npath = path:new(workspace_folder .. dirsep .. name)
+            npath:mkdir()
+
+            runTask({
+                name = "ArtiGen Cp Template",
+                type = "shell",
+                command = "/opt/arti/generator/bin/arti-gen",
+                args = {
+                    "-t cp-problem",
+                    "-n solution"
+                },
+                cwd = tostring(npath)
+            }, function()
+                vim.cmd(":e " .. tostring(npath) .. dirsep .. "solution.cpp")
+            end)
+        end
+    },
 }
