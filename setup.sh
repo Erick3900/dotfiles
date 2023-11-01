@@ -36,8 +36,8 @@ sudo update-alternatives --set cc /usr/bin/gcc
 sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++ 30
 sudo update-alternatives --set c++ /usr/bin/g++
 
-echo "Installing Conan (v1.59.0)"
-sudo pip install conan==1.59.0
+echo "Installing Conan"
+sudo pip install conan
 
 echo "Installing Rust"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -51,10 +51,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 chsh -s $(which zsh)
 
 echo "Removing existing dotfiles"
-mkdir -p ~/.conan
+mkdir -p ~/.conan2
 mkdir -p ~/.config 
 
-rm -rf ~/.vim ~/.vimrc ~/.zshrc ~/.tmux ~/.tmux.conf ~/.clang-format ~/.profile ~/.bashrc ~/.config/nvim ~/.conan/profiles ~/.config/coc ~/.tmux.conf ~/.tmux 2> /dev/null
+rm -rf ~/.vim ~/.vimrc ~/.zshrc ~/.tmux ~/.tmux.conf ~/.clang-format ~/.profile ~/.bashrc ~/.config/nvim ~/.conan2/profiles ~/.config/coc ~/.tmux.conf ~/.tmux 2> /dev/null
 
 echo "Creating symlinks"
 ln -s ~/dotfiles/zshrc ~/.zshrc
@@ -62,7 +62,7 @@ ln -s ~/dotfiles/clangd ~/.clangd
 ln -s ~/dotfiles/condarc ~/.condarc
 ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/clang-format ~/.clang-format
-ln -s ~/dotfiles/conan-profiles ~/.conan/profiles
+ln -s ~/dotfiles/conan-profiles ~/.conan2/profiles
 ln -s ~/dotfiles/artichoke.zsh-theme ~/.oh-my-zsh/themes/artichoke.zsh-theme
 
 echo "Installing NodeJS & Yarn"
@@ -87,7 +87,7 @@ if [ "$(id -u)" -ne 0 ]; then
     sudo chsh -s $(which zsh)
 
     echo "Removing existing dotfiles"
-    sudo rm -rf /root/.vim /root/.vimrc /root/.conan /root/.zshrc /root/.tmux /root/.tmux.conf /root/.clang-format /root/.profile /root/.bashrc /root/.config/nvim /root/.local/share/nvim /root/miniconda3 /root/.cargo /root/.rustup /root/.config/coc /root/.conan /root/.tmux /root/.tmux.conf 2> /dev/null
+    sudo rm -rf /root/.vim /root/.vimrc /root/.conan2 /root/.zshrc /root/.tmux /root/.tmux.conf /root/.clang-format /root/.profile /root/.bashrc /root/.config/nvim /root/.local/share/nvim /root/miniconda3 /root/.cargo /root/.rustup /root/.config/coc /root/.conan /root/.tmux /root/.tmux.conf 2> /dev/null
 
     echo "Creating symlinks"
     sudo mkdir -p /root/.config
@@ -95,7 +95,7 @@ if [ "$(id -u)" -ne 0 ]; then
 
     sudo ln -s ~/.tmux /root/.tmux
     sudo ln -s ~/.cargo /root/.cargo
-    sudo ln -s ~/.conan /root/.conan
+    sudo ln -s ~/.conan2 /root/.conan2
     sudo ln -s ~/.rustup /root/.rustup
     sudo ln -s ~/miniconda3 /root/miniconda3
     sudo ln -s ~/.config/coc /root/.config/coc

@@ -5,10 +5,10 @@ return {
         command = "conan",
         args = {
             "install",
-            "-if conan",
-            workspace_folder,
+            "--output-folder build",
             "--build=missing",
-            "-s build_type=" .. state.build_mode
+            "-s build_type=" .. state.build_mode,
+            workspace_folder
         },
         cwd = workspace_folder
     },
@@ -21,7 +21,7 @@ return {
                 args = {
                     "-S " .. workspace_folder,
                     "-B " .. ws.build_dir,
-                    "-DCMAKE_PREFIX_PATH=conan",
+                    "-DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake",
                     "-DCMAKE_EXPORT_COMPILE_COMMANDS=1",
                     "-DCMAKE_BUILD_TYPE=" .. state.build_mode
                 }
