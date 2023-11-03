@@ -1,9 +1,13 @@
 #!/bin/env bash
 
-VAR_LLVM_SUFFIX=-16
-VAR_LLVM_GIT_BRANCH=tags/llvmorg-16.0.2
+VAR_LLVM_SUFFIX=-18
+VAR_LLVM_GIT_BRANCH=tags/llvmorg-18-init
 
 mkdir -p ~/dev/thirdparty
+
+if [ -d ~/dev/thirdparty/llvm-src ]; then
+    sudo rm -fr ~/dev/thirdparty/llvm-src
+fi
 
 git clone https://github.com/llvm/llvm-project.git ~/dev/thirdparty/llvm-src
 

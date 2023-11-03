@@ -14,7 +14,7 @@ return {
         }
     },
     -- transparent = true,
-    terminalColors = false,
+    terminalColors = true,
     overrides = function(colors)
         local theme = colors.theme
         return {

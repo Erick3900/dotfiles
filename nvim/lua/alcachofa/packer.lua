@@ -6,6 +6,7 @@ return require('packer').startup(function(use)
     -- Themes
     use('rebelot/kanagawa.nvim')
     use('EdenEast/nightfox.nvim')
+    use('sainnhe/gruvbox-material')
     use('loctvl842/monokai-pro.nvim')
 
     -- Syntax Highlighting

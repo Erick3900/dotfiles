@@ -61,15 +61,14 @@ lspconfig.lua_ls.setup({
     }
 })
 
-require("clangd_extensions").setup({
-    server = {
-        cmd = {
-            '/opt/llvm-16/bin/clangd',
-            '--query-driver=/usr/bin/gcc,/usr/bin/g++',
-            '--header-insertion=never'
-        }
+lspconfig.clangd.setup({
+    cmd = {
+        '/opt/llvm-17/bin/clangd',
+        '--query-driver="/usr/bin/gcc,/usr/bin/g++"',
+        '--header-insertion=never'
     }
 })
+require("clangd_extensions").setup()
 
 local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<Up>'] = cmp.mapping.select_prev_item({

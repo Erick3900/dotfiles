@@ -1,5 +1,5 @@
 local serpent = require('arti.serpent')
-local theme_path = vim.fn.stdpath('config')..'/lua/alcachofa/colorschemes/current.lua'
+local theme_path = vim.fn.stdpath('config') .. '/lua/alcachofa/colorschemes/current.lua'
 
 local function SetTheme(theme)
     local _themes = {
@@ -14,6 +14,9 @@ local function SetTheme(theme)
         ['kanagawa'] = function()
             require('kanagawa').setup(require('alcachofa.colorschemes.kanagawa'))
             vim.cmd.colorscheme("kanagawa-dragon")
+        end,
+        ['gruvbox'] = function()
+            require('alcachofa.colorschemes.gruvbox').setup()
         end
     }
 
@@ -53,7 +56,8 @@ vim.api.nvim_create_user_command(
             return {
                 "kanagawa",
                 "monokai-pro",
-                "nightfox"
+                "nightfox",
+                "gruvbox"
             }
         end
     }
