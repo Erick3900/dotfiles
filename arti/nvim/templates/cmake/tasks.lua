@@ -5,7 +5,7 @@ return {
         command = "conan",
         args = {
             "install",
-            "--output-folder build",
+            "--output-folder=" .. ws.build_dir,
             "--build=missing",
             "-s build_type=" .. state.build_mode,
             workspace_folder

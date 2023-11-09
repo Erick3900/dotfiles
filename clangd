@@ -1,4 +1,4 @@
 CompileFlags:
-    Add: [ -std=c++23, -stdlib=libc++, -Wall, -Wextra, -Wshadow, -Wpedantic ]
+    Add: [ -std=c++23, -Wall, -Wextra, -Wshadow, -Wpedantic ]
     Compiler: g++
     CompilationDatabase: build

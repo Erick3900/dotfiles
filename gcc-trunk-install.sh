@@ -1,15 +1,15 @@
 #!/bin/env bash
 
-VAR_GCC_SUFFIX=-trunk
-VAR_GCC_GIT_BRANCH=trunk
+VAR_GCC_SUFFIX=-13
+VAR_GCC_GIT_BRANCH=releases/gcc-13.2.0
 
 mkdir -p ~/dev/thirdparty
 
-git clone git://gcc.gnu.org/git/gcc.git ~/dev/thirdparty/gcc-src
+# git clone --depth 1 --branch "${VAR_GCC_GIT_BRANCH}" git://gcc.gnu.org/git/gcc.git ~/dev/thirdparty/gcc-src
 
 cd ~/dev/thirdparty/gcc-src
 
-git checkout $VAR_GCC_GIT_BRANCH
+# git checkout $VAR_GCC_GIT_BRANCH
 
 if [ -d ~/dev/thirdparty/gcc$VAR_GCC_SUFFIX ]; then
     sudo rm -fr ~/dev/thirdparty/gcc$VAR_GCC_SUFFIX
