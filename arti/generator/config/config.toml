@@ -28,3 +28,15 @@ type = "folder"
 name = "cmake-mult-exec"
 root = "{{ name }}"
 folder = "cmake-mult-exec-template"
+
+[aoc-year]
+type = "folder"
+name = "aoc-year"
+root = "{{ name }}"
+folder = "aoc-year-template"
+
+[aoc-day]
+type = "folder"
+name = "aoc-day"
+root = "{{ name }}"
+folder = "aoc-day-template"

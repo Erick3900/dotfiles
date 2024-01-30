@@ -23,7 +23,9 @@ lsp.ensure_installed({
     'rust_analyzer',
     'taplo',
     'yamlls',
-    'zls'
+    'zls',
+    'gradle_ls',
+    'jdtls'
 })
 
 lspconfig.html.setup({})
@@ -38,7 +40,13 @@ lspconfig.tsserver.setup({})
 lspconfig.rust_analyzer.setup({})
 lspconfig.golangci_lint_ls.setup({})
 lspconfig.dartls.setup({})
+lspconfig.gradle_ls.setup({})
+lspconfig.jdtls.setup({})
+
 lspconfig.zls.setup({})
+
+vim.g.zig_fmt_autosave = false
+
 lspconfig.yamlls.setup({
     settings = {
         yaml = { keyOrdering = false }

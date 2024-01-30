@@ -68,7 +68,7 @@ function files() {
 
 # Aliases
 
-alias cat='batcat -p -P'
+alias cat='batcat -p -P --theme=gruvbox-dark'
 alias clip='xclip -sel clip'
 
 export CPM_SOURCE_CACHE=$HOME/dev/.cpm-cache
